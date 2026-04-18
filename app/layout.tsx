@@ -5,9 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
-  title: "GoodChat — мессенджер нового поколения",
-  description:
-    "Мгновенные сообщения, сквозное шифрование, HD видеозвонки. Общайтесь без границ с GoodChat.",
+  title: "Comnata — анонимный мессенджер",
+  description: "Общайтесь анонимно. Без номера телефона, без сбора данных, с E2E шифрованием. Comnata — мессенджер для тех, кто ценит приватность.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -3,63 +3,64 @@ import { useState } from "react";
 
 const plans = [
   {
-    name: "Бесплатно",
-    priceMonthly: 0,
-    priceYearly: 0,
+    name: "Анонимус",
+    monthlyPrice: 0,
+    yearlyPrice: 0,
     desc: "Для личного использования",
-    color: "border-white/10",
-    badge: null,
+    highlight: false,
     features: [
-      "Безлимитные сообщения",
-      "Голосовые и видеозвонки",
-      "Группы до 200 участников",
-      "Хранилище 5 ГБ",
+      "Анонимная регистрация",
+      "E2E шифрование",
+      "Личные и групповые чаты",
+      "Голосовые и видеозвонки 1-на-1",
+      "Самоудаляющиеся сообщения",
+      "Файлы до 512 МБ",
       "Все платформы",
     ],
-    missing: ["Групповые звонки до 10 чел", "Приоритетная поддержка", "API доступ"],
+    missing: ["Групповые звонки", "Tor-режим", "Приоритетная поддержка", "API доступ"],
     cta: "Начать бесплатно",
-    ctaStyle: "glass text-white hover:bg-white/15",
+    ctaClass: "btn-outline w-full py-3.5 text-sm",
   },
   {
-    name: "Pro",
-    priceMonthly: 299,
-    priceYearly: 199,
-    desc: "Для команд и бизнеса",
-    color: "border-purple-500/60",
+    name: "Приватный",
+    monthlyPrice: 349,
+    yearlyPrice: 249,
+    desc: "Максимальная анонимность",
+    highlight: true,
     badge: "Популярный",
     features: [
-      "Всё из Бесплатного",
-      "Групповые звонки до 100 чел",
-      "Группы до 50 000 участников",
-      "Хранилище 100 ГБ",
-      "Совместный экран",
-      "Приоритетная поддержка 24/7",
-      "Кастомные темы и стикеры",
+      "Всё из «Анонимус»",
+      "Tor-маршрутизация",
+      "Встроенный VPN-режим",
+      "Групповые звонки до 25 человек",
+      "Файлы до 4 ГБ",
+      "Защита от скриншотов",
+      "Режим инкогнито",
+      "Приоритетная поддержка",
     ],
     missing: ["API доступ"],
     cta: "Попробовать 14 дней бесплатно",
-    ctaStyle: "gradient-bg text-white hover:opacity-90",
+    ctaClass: "btn-primary w-full py-3.5 text-sm",
   },
   {
-    name: "Enterprise",
-    priceMonthly: 999,
-    priceYearly: 749,
-    desc: "Для крупных организаций",
-    color: "border-blue-500/40",
-    badge: null,
+    name: "Корпоративный",
+    monthlyPrice: 1490,
+    yearlyPrice: 990,
+    desc: "Для команд и организаций",
+    highlight: false,
     features: [
-      "Всё из Pro",
-      "Неограниченные хранилище",
-      "Групповые звонки до 1000 чел",
-      "API и вебхуки",
-      "SSO и LDAP",
-      "Выделенный менеджер",
+      "Всё из «Приватного»",
+      "Групповые звонки до 200 человек",
       "On-premise деплой",
+      "API и вебхуки",
+      "SSO авторизация",
+      "Выделенный менеджер",
       "SLA 99.99%",
+      "Аудит безопасности",
     ],
     missing: [],
     cta: "Связаться с нами",
-    ctaStyle: "glass text-white hover:bg-white/15",
+    ctaClass: "btn-outline w-full py-3.5 text-sm",
   },
 ];
 
@@ -67,110 +68,111 @@ export default function Pricing() {
   const [yearly, setYearly] = useState(false);
 
   return (
-    <section id="pricing" className="bg-[#0D0D22] py-24 px-6">
+    <section id="pricing" className="py-24 px-6 bg-slate-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <span className="inline-block text-purple-400 text-sm font-semibold uppercase tracking-widest mb-4">
-            Цены
-          </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-5">
-            Прозрачные тарифы,{" "}
-            <span className="gradient-text">никаких сюрпризов</span>
+          <div className="section-label">
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            Прайс-лист
+          </div>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-5">
+            Честные цены.<br />
+            <span className="text-blue-600">Без скрытых условий.</span>
           </h2>
-          <p className="text-white/50 text-lg max-w-xl mx-auto mb-8">
-            Начните бесплатно. Переходите на платный план только когда нужно.
+          <p className="text-lg text-slate-500 max-w-xl mx-auto mb-8">
+            Мы не продаём ваши данные рекламодателям. Наш доход —
+            только подписки.
           </p>
 
           {/* Toggle */}
-          <div className="inline-flex items-center gap-3 glass rounded-full p-1">
+          <div className="inline-flex items-center bg-white border border-slate-200 rounded-xl p-1 shadow-sm">
             <button
               onClick={() => setYearly(false)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${
-                !yearly ? "gradient-bg text-white" : "text-white/50 hover:text-white"
-              }`}
+              className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all ${!yearly ? "bg-blue-600 text-white shadow-sm" : "text-slate-500 hover:text-slate-800"}`}
             >
               Ежемесячно
             </button>
             <button
               onClick={() => setYearly(true)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all flex items-center gap-2 ${
-                yearly ? "gradient-bg text-white" : "text-white/50 hover:text-white"
-              }`}
+              className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${yearly ? "bg-blue-600 text-white shadow-sm" : "text-slate-500 hover:text-slate-800"}`}
             >
               Ежегодно
-              <span className="text-xs bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full">−33%</span>
+              <span className={`text-xs font-bold px-1.5 py-0.5 rounded-md ${yearly ? "bg-white/20 text-white" : "bg-green-100 text-green-700"}`}>−29%</span>
             </button>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-          {plans.map((plan) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
+          {plans.map(plan => (
             <div
               key={plan.name}
-              className={`relative rounded-2xl border bg-gradient-to-b from-white/5 to-transparent p-7 flex flex-col transition-all hover:-translate-y-1 duration-300 ${plan.color} ${
-                plan.badge ? "shadow-xl shadow-purple-500/20" : ""
+              className={`relative rounded-2xl p-7 flex flex-col transition-all ${
+                plan.highlight
+                  ? "blue-gradient text-white shadow-2xl shadow-blue-200 scale-[1.02]"
+                  : "bg-white border border-slate-200 hover:border-blue-200 hover:shadow-lg"
               }`}
             >
               {plan.badge && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span className="gradient-bg text-white text-xs font-bold px-4 py-1.5 rounded-full">
-                    {plan.badge}
-                  </span>
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-400 text-amber-900 text-xs font-bold px-4 py-1.5 rounded-full shadow">
+                  {plan.badge}
                 </div>
               )}
 
-              <div className="mb-6">
-                <h3 className="text-white font-bold text-xl mb-1">{plan.name}</h3>
-                <p className="text-white/40 text-sm">{plan.desc}</p>
+              <div className="mb-5">
+                <h3 className={`font-extrabold text-xl mb-1 ${plan.highlight ? "text-white" : "text-slate-900"}`}>{plan.name}</h3>
+                <p className={`text-sm ${plan.highlight ? "text-blue-100" : "text-slate-500"}`}>{plan.desc}</p>
               </div>
 
-              <div className="mb-7">
-                {plan.priceMonthly === 0 ? (
-                  <div className="text-white">
-                    <span className="text-5xl font-black">0 ₽</span>
-                    <span className="text-white/40 text-sm ml-2">навсегда</span>
+              <div className="mb-6">
+                {plan.monthlyPrice === 0 ? (
+                  <div className={`text-4xl font-black ${plan.highlight ? "text-white" : "text-slate-900"}`}>
+                    Бесплатно
                   </div>
                 ) : (
-                  <div className="text-white">
-                    <span className="text-5xl font-black">
-                      {yearly ? plan.priceYearly : plan.priceMonthly} ₽
-                    </span>
-                    <span className="text-white/40 text-sm ml-2">/ мес</span>
+                  <>
+                    <div className={`text-4xl font-black ${plan.highlight ? "text-white" : "text-slate-900"}`}>
+                      {yearly ? plan.yearlyPrice : plan.monthlyPrice} ₽
+                      <span className={`text-base font-normal ml-1 ${plan.highlight ? "text-blue-200" : "text-slate-400"}`}>/мес</span>
+                    </div>
                     {yearly && (
-                      <div className="text-white/40 text-xs mt-1 line-through">{plan.priceMonthly} ₽ / мес</div>
+                      <div className={`text-sm mt-0.5 line-through ${plan.highlight ? "text-blue-200" : "text-slate-400"}`}>
+                        {plan.monthlyPrice} ₽/мес
+                      </div>
                     )}
-                  </div>
+                  </>
                 )}
               </div>
 
-              <ul className="space-y-3 mb-8 flex-1">
-                {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-white/80">
-                    <svg className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+              <ul className="space-y-2.5 flex-1 mb-7">
+                {plan.features.map(f => (
+                  <li key={f} className="flex items-start gap-2 text-sm">
+                    <svg className={`w-4 h-4 flex-shrink-0 mt-0.5 ${plan.highlight ? "text-blue-200" : "text-blue-600"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7"/>
                     </svg>
-                    {f}
+                    <span className={plan.highlight ? "text-blue-50" : "text-slate-700"}>{f}</span>
                   </li>
                 ))}
-                {plan.missing.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-white/25">
-                    <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                {plan.missing.map(f => (
+                  <li key={f} className="flex items-start gap-2 text-sm">
+                    <svg className={`w-4 h-4 flex-shrink-0 mt-0.5 ${plan.highlight ? "text-blue-300/50" : "text-slate-300"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12"/>
                     </svg>
-                    {f}
+                    <span className={plan.highlight ? "text-blue-200/50" : "text-slate-300"}>{f}</span>
                   </li>
                 ))}
               </ul>
 
-              <a
-                href="#"
-                className={`w-full py-3.5 rounded-xl text-sm font-bold text-center transition-all ${plan.ctaStyle}`}
-              >
-                {plan.cta}
-              </a>
+              <a href="#" className={plan.ctaClass}>{plan.cta}</a>
             </div>
           ))}
         </div>
+
+        <p className="text-center text-sm text-slate-400 mt-8">
+          Все тарифы включают анонимную регистрацию и E2E шифрование.
+          Отмена в любой момент без штрафов.
+        </p>
       </div>
     </section>
   );
