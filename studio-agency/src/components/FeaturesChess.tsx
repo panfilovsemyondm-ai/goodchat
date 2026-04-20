@@ -2,9 +2,11 @@ import { useRef } from 'react'
 import { motion, useInView } from 'motion/react'
 import { ArrowUpRight } from 'lucide-react'
 import BlurText from './BlurText'
+import gif1 from '../assets/feature-1.gif'
+import gif2 from '../assets/feature-2.gif'
 
-const GIF_1 = 'https://motionsites.ai/assets/hero-finlytic-preview-CV9g0FHP.gif'
-const GIF_2 = 'https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif'
+const GIF_1 = gif1
+const GIF_2 = gif2
 
 function Row({
   reverse,

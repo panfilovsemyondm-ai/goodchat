@@ -1,4 +1,5 @@
 import { ArrowUpRight } from 'lucide-react'
+import logoIcon from '../assets/logo-icon.png'
 
 const NAV_LINKS = ['Home', 'Services', 'Work', 'Process', 'Pricing']
 
@@ -8,12 +9,7 @@ export default function Navbar() {
       <div className="flex items-center justify-between py-3">
         {/* Logo */}
         <div className="h-12 w-12 flex items-center justify-center">
-          <div className="h-12 w-12 rounded-full liquid-glass flex items-center justify-center">
-            <svg viewBox="0 0 48 48" fill="none" className="h-7 w-7">
-              <circle cx="24" cy="24" r="24" fill="white" fillOpacity="0.15" />
-              <path d="M34 14L22 26M34 14L29 34L22 24L12 20L34 14Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
+          <img src={logoIcon} alt="Studio" className="h-12 w-12 object-contain" />
         </div>
 
         {/* Center nav — desktop only */}
